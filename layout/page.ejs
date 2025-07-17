@@ -45,7 +45,7 @@ function layoutDiv() {
   }
   el += `<article class="${articleClass()}">`
   if (page.content && page.content.length > 0) {
-    el += page.content
+    el += typeof page.content === 'string' ? page.content : ''
   }
   if (notebook) {
     el += partial('_partial/main/notebook/note_tags', { notebook: notebook })

@@ -1,0 +1,46 @@
+<main class="about container" style="max-width:520px;margin:3em auto 2em;">
+    <div style="text-align:center;">
+      <img src="<%= page.avatar %>" alt="avatar" class="about-avatar">
+      <h1 class="about-name"><%= page.author %></h1>
+      <div class="about-bio-card">
+        <%= page.description %>
+      </div>
+    </div>
+  </main>
+  <style>
+  .about-avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    box-shadow: 0 4px 24px rgba(56,189,248,0.13);
+    margin-bottom: 1.2em;
+    object-fit: cover;
+    border: 4px solid #fff;
+    background: #f8fafc;
+  }
+  .about-name {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0.6em;
+    color: #222;
+    letter-spacing: 1px;
+  }
+  .about-bio-card {
+    display: inline-block;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 1.5em 2em 1.2em;
+    color: #444;
+    font-size: 1.13em;
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+    text-align: left;
+    max-width: 100%;
+  }
+  @media (max-width: 600px) {
+    .about-bio-card { padding: 1em 0.8em; }
+    .about-avatar { width: 90px; height: 90px; }
+    .about-name { font-size: 1.3em; }
+  }
+  </style>
