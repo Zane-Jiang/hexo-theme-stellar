@@ -49,11 +49,11 @@ menubar:
       icon: solar:documents-bold-duotone
       title: Blog
       url: /
-    - id: paper-read-list
+    - id: notebooks
       theme: '#3DC550'
       icon: solar:notebook-bookmark-bold-duotone
-      title: paper-read-list
-      url: /paper-read-list/
+      title: notebooks
+      url: /notebooks/
     - id: project
       theme: '#FA6400'
       icon: solar:planet-bold-duotone
@@ -115,6 +115,10 @@ site_tree:
     # 笔记本列表页的左侧栏和右侧栏。
     leftbar: recent # recent within all notebooks
     rightbar: null
+    tree:
+      paper:
+        id: paper
+  
   # 笔记列表页配置
   notes:
     # 笔记列表页和笔记页高亮的主导航栏菜单按钮。
@@ -234,14 +238,6 @@ comments:
     keep-theme: # true/false
     loading: false
     branch: main
-  # utterances
-  # https://utteranc.es/
-  utterances:
-    repo: xxx/xxx
-    issue-term: pathname
-    issue-number:
-    theme: preferred-color-scheme
-    label:
   # giscus
   # https://giscus.app/zh-CN
   giscus:
@@ -260,70 +256,6 @@ comments:
     data-loading: # lazy
     crossorigin: anonymous
 
-  # Twikoo
-  # https://twikoo.js.org/
-  twikoo:
-    js: https://gcore.jsdelivr.net/npm/twikoo@1.6/dist/twikoo.all.min.js # 建议锁定版本
-    envId: https://xxx # vercel函数
-
-  # Waline
-  # https://waline.js.org/
-  waline:
-    js: https://gcore.jsdelivr.net/npm/@waline/client@3.1/dist/waline.js
-    css: https://gcore.jsdelivr.net/npm/@waline/client@3.1/dist/waline.css
-    meta_css: https://gcore.jsdelivr.net/npm/@waline/client@3.1/dist/waline-meta.css
-    # Waline server address url, you should set this to your own link
-    serverURL: https://waline.vercel.app
-    # If false, comment count will only be displayed in post page, not in home page
-    commentCount: true
-    # Pageviews count, Note: You should not enable both `waline.pageview` and `leancloud_visitors`.
-    pageview: false
-    # Custom emoji
-    # emoji:
-    #   - https://unpkg.com/@waline/emojis@1.1.0/weibo
-    #   - https://unpkg.com/@waline/emojis@1.1.0/alus
-    #   - https://unpkg.com/@waline/emojis@1.1.0/bilibili
-    #   - https://unpkg.com/@waline/emojis@1.1.0/qq
-    #   - https://unpkg.com/@waline/emojis@1.1.0/tieba
-    #   - https://unpkg.com/@waline/emojis@1.1.0/tw-emoji
-    #   - https://unpkg.com/@waline/emojis@1.1.0/bmoji
-    # 设置自己的图床服务，替换默认的 Base 64 编码嵌入（有体积大小限制），在评论中上传图片更加方便
-    # imageUploader:
-      # 适配了兰空图床V1、V2版本
-      # 以兰空图床V1为例，下列填写内容为：
-      # fileName: file
-      # tokenName: Authorization
-      # api: https://xxxxxx/api/v1/upload
-      # token: Bearer xxxxxxxxxxxxxx
-      # resp: data.links.url
-      # 以兰空图床V2为例，下列填写内容为：
-      # fileName: image
-      # tokenName: token
-      # api: https://xxxxxx/api/upload
-      # token: xxxxxxxxxxxxxx
-      # resp: data.url
-    #   fileName: # 根据版本二选一
-    #   tokenName: # 根据版本二选一
-    #   api: # 图床 api 地址
-    #   token: # 图床验证
-    #   resp: # 图片地址返回值的字段
-
-  # Artalk
-  # https://artalk.js.org/
-  artalk:
-    css: https://unpkg.com/artalk@2.9/dist/Artalk.css
-    js: https://unpkg.com/artalk@2.9/dist/Artalk.js
-    server: # 后端服务地址
-    site: '' # 站点名称
-    darkMode: auto # 其它模式都有问题，慎用，否则后果自负
-    fancybox: true # 是否为评论区启用 fancybox
-    # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
-    # 配置此项时将覆盖服务端上传能力
-    imageUploader:
-      # 以兰空图床为例，下列填写内容为：
-      # api: 'https://xxxxxx/api/v1/upload' # 图床上传地址
-      # token: 'Bearer xxxxxxxxxxxxxx' # 图床验证
-      # resp: 'data.links.url' # 图片地址返回值的字段
 
 
 ######## Footer ########
@@ -367,7 +299,14 @@ footer:
     #     - '[xxx](/)'
     #     - '[xxx](/)'
   content: | # 支持 Markdown 格式
-    本站由 [{author.name}](/) 使用 [{theme.name} {theme.version}]({theme.tree}) 主题创建，一款很棒的主题！
+    <div style="text-align:center; font-size:0.8rem; font-weight:bold; margin:2em 0;">
+      本站由 <a href="/">{author.name}</a> 使用
+      <a href="{theme.tree}">{theme.name} {theme.version}</a>
+      主题创建，一款很棒的 Hexo 主题！
+
+       <span id="busuanzi_container_site_pv">本站总访问量   <span id="busuanzi_value_site_pv">  </span>  次</span> <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </div>
+
   # 本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。
   # 主题用户越多，开发者维护和更新的积极性就越高，如果您喜欢本主题，请在适当的位置显示主题信息和仓库链接以表支持。
 

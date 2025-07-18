@@ -4,7 +4,9 @@
 
 hexo.extend.generator.register('notebooks', function (locals) {
   const { site_tree, notebooks } = hexo.theme.config
+
   if (!notebooks?.tree || Object.keys(notebooks.tree).length === 0) {
+    console.log('[WARN] notebooks.tree 为空，不生成任何页面')
     return []
   }
   // 不用 blog 和 notebooks 时不必依赖 hexo-pagination
