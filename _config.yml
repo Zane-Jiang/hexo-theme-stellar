@@ -33,7 +33,7 @@ structured_data:
 logo:
   avatar: '[{config.avatar}](/about/)' # you can set avatar link in _config.yml or '[https://xxx.png](/about/)'
   title: '[{config.title}](/)' # you can set html tag like: '[<img no-lazy height="32px" src="xxx"/>](/)'
-  subtitle:  #'文字1 | 文字2' (鼠标放上去会切换到文字2)
+  subtitle: My notebooks & blog #'文字1 | 文字2' (鼠标放上去会切换到文字2)
 
 # 侧边栏主功能导航菜单
 menubar:
@@ -56,7 +56,7 @@ menubar:
       url: /notebooks/
     - id: project
       theme: '#FA6400'
-      icon: solar:planet-bold-duotone
+      icon: solar:project-laptop
       title: Project
       url: /project/
     # - id: social
