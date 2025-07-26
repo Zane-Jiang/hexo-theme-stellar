@@ -45,7 +45,13 @@ function layoutDiv() {
   }
   el += `<article class="${articleClass()}">`
   if (page.content && page.content.length > 0) {
-    el += typeof page.content === 'string' ? page.content : ''
+    let content = typeof page.content === 'string' ? page.content : '';
+    if(notebook){
+      // Fix image paths to use relative paths
+      content = content.replace(/<img\s+src="\/([^"]+)"/g, '<img src="$1"');
+      page.content = content;
+    }
+    el += content
   }
   if (notebook) {
     el += partial('_partial/main/notebook/note_tags', { notebook: notebook })
