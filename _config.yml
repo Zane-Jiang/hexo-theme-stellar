@@ -113,11 +113,9 @@ site_tree:
     base_dir: notebooks # 笔记本列表页的路径。以及未指定 base_dir 的笔记本的路径前缀。
     menu_id: notebooks # 笔记本列表页高亮的主导航栏菜单按钮。
     # 笔记本列表页的左侧栏和右侧栏。
-    leftbar: recent # recent within all notebooks
-    rightbar: null
-    tree:
-      paper:
-        id: paper
+    leftbar:  # recent within all notebooks
+    rightbar: recent
+
   
   # 笔记列表页配置
   notes:
@@ -149,7 +147,7 @@ site_tree:
     rightbar: timeline
   # 其它自定义页面配置 layout: page
   page:
-    leftbar: recent
+    leftbar: recent,tagtree
     rightbar: toc
 
 
