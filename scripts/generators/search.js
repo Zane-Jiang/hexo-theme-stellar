@@ -74,8 +74,8 @@ hexo.extend.generator.register('search_json_generator', function (locals) {
   }
 
   if (posts) {
+    var layout_list = ["post"]
     posts.each(function(post) {
-      var layout_list = ["post"]
       if (!layout_list.includes(post.layout)) return
       if (cfg.skip_search && matchAndExit(post.path, cfg.skip_search)) return
       if (post.indexing == false) return
@@ -84,8 +84,12 @@ hexo.extend.generator.register('search_json_generator', function (locals) {
     }) 
   } 
   if (pages) {
+    var layout_list = ["page", "wiki"]
+    if(cfg.field == 'all'){
+      layout_list.push('notes')
+      layout_list.push('notebooks')
+    }
     pages.each(function(page) {
-      var layout_list = ["page", "wiki"]
       if (!layout_list.includes(page.layout)) return
       if (cfg.skip_search && matchAndExit(page.path, cfg.skip_search)) return
       if (page.indexing == false) return
