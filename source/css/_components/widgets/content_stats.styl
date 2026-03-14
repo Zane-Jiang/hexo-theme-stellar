@@ -1,39 +1,43 @@
 .widget-wrapper.content-stats
   .widget-body
-    background: linear-gradient(160deg, var(--bg-a50), var(--bg-a20))
+    background: var(--bg-a20)
     border-radius: $border-card-s
     padding: 10px 12px
-    display: grid
+    display: flex
+    flex-direction: column
     gap: 8px
 
   .summary
     border-radius: 10px
-    padding: 10px 12px
-    background: linear-gradient(120deg, var(--bg-a100), var(--bg-a20))
+    padding: 10px 14px
+    background: linear-gradient(135deg, var(--theme-a20), var(--theme-a10))
+    display: flex
+    align-items: baseline
+    gap: 8px
 
   .summary-label
     color: var(--text-p2)
     font-size: $fs-12
 
   .summary-value
-    margin-top: 3px
-    color: var(--text-p1)
+    color: var(--theme)
     font-weight: 700
     font-size: $fs-20
+    letter-spacing: -0.5px
 
   .stat-item
     display: flex
     align-items: center
     justify-content: space-between
     line-height: 1.2
-    background: var(--bg-a20)
+    background: var(--bg-a50)
     border-radius: 8px
-    padding: 10px
+    padding: 9px 12px
     text-decoration: none
     trans1 background
 
     &:hover
-      background: var(--bg-a50)
+      background: var(--bg-a100)
 
   .left
     display: inline-flex
@@ -43,17 +47,18 @@
   .right
     display: inline-flex
     align-items: center
-    gap: 7px
+    gap: 6px
 
   .dot
     display: inline-flex
     align-items: center
     justify-content: center
-    width: 1.5rem
-    height: 1.5rem
-    border-radius: 999px
-    background: var(--block)
-    color: var(--accent)
+    width: 1.6rem
+    height: 1.6rem
+    border-radius: 8px
+    background: var(--theme-a20)
+    color: var(--theme)
+    flex-shrink: 0
 
     svg
       width: 1rem
@@ -62,12 +67,13 @@
 
   .label
     color: var(--text-p2)
+    font-size: $fs-14
 
   .value
     color: var(--text-p1)
     font-weight: 700
-    font-size: $fs-16
+    font-size: $fs-15
 
   .arrow
     color: var(--text-p3)
-    font-size: $fs-13
+    font-size: $fs-12

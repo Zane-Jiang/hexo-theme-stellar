@@ -23,7 +23,7 @@ recent:
 
 content_stats:
   layout: content_stats
-  title: 内容统计
+  title: 站内统计
   total_label: 合计字数
   labels:
     post: 博客
