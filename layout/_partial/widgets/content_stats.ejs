@@ -1,0 +1,100 @@
+<%
+const wiki = theme.wiki || {}
+const shelf = Array.isArray(wiki.shelf) ? wiki.shelf : []
+
+function menuUrl(menuId, fallback) {
+  const items = theme.menubar?.items || []
+  const entry = items.find(i => i.id === menuId && i.url)
+  return pretty_url(entry?.url || fallback)
+}
+
+function htmlToText(input) {
+  return String(input || '')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-zA-Z0-9#]+;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function countWords(input) {
+  const text = htmlToText(input)
+  const zhCount = (text.match(/[\u4e00-\u9fff]/g) || []).length
+  const enCount = (text.replace(/[\u4e00-\u9fff]/g, ' ').match(/[A-Za-z0-9_]+/g) || []).length
+  return zhCount + enCount
+}
+
+function formatCount(num) {
+  if (num >= 1000000) {
+    return `${(num / 1000000).toFixed(1)}M`
+  }
+  if (num >= 1000) {
+    return `${(num / 1000).toFixed(1)}k`
+  }
+  return `${num}`
+}
+
+const posts = site.posts.filter(p => p.title?.length > 0 && p.published !== false)
+const notes = site.pages.filter(p => p.notebook && p.title?.length > 0 && p.published !== false)
+const projectPages = site.pages.filter(p => p.wiki && shelf.includes(p.wiki) && p.title?.length > 0 && p.published !== false)
+
+const projectCount = shelf.filter(id => {
+  const proj = wiki.tree?.[id]
+  return proj && Array.isArray(proj.pages) && proj.pages.length > 0
+}).length
+
+const totalWords = posts.reduce((sum, p) => sum + countWords(p.content || p.excerpt || ''), 0)
+  + notes.reduce((sum, p) => sum + countWords(p.content || p.excerpt || ''), 0)
+  + projectPages.reduce((sum, p) => sum + countWords(p.content || p.excerpt || ''), 0)
+
+const labels = item.labels || {}
+const stats = [
+  {
+    key: 'post',
+    name: labels.post || 'Blog',
+    value: posts.length,
+    href: menuUrl('post', '/'),
+    icon: 'solar:documents-bold-duotone'
+  },
+  {
+    key: 'note',
+    name: labels.note || 'Notebook',
+    value: notes.length,
+    href: menuUrl('notebooks', '/notebooks/'),
+    icon: 'solar:notebook-bookmark-bold-duotone'
+  },
+  {
+    key: 'project',
+    name: labels.project || 'Project',
+    value: projectCount,
+    href: menuUrl('project', '/project/'),
+    icon: 'solar:project-laptop'
+  }
+]
+%>
+
+<widget class="widget-wrapper<%= scrollreveal(' ') %> content-stats">
+  <div class="widget-header dis-select">
+    <span class="name"><%= item.title || 'Content Stats' %></span>
+  </div>
+  <div class="widget-body fs14">
+    <div class="summary">
+      <div class="summary-label"><%= item.total_label || '总字数' %></div>
+      <div class="summary-value"><%= formatCount(totalWords) %></div>
+    </div>
+
+    <% stats.forEach(stat => { %>
+      <a class="stat-item" href="<%= stat.href %>">
+        <span class="left">
+          <span class="dot"><%- icon(stat.icon) %></span>
+          <span class="label"><%= stat.name %></span>
+        </span>
+        <span class="right">
+          <span class="value"><%= stat.value %></span>
+          <span class="arrow">→</span>
+        </span>
+      </a>
+    <% }) %>
+  </div>
+</widget>

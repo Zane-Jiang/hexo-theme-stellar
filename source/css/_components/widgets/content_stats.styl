@@ -1,0 +1,73 @@
+.widget-wrapper.content-stats
+  .widget-body
+    background: linear-gradient(160deg, var(--bg-a50), var(--bg-a20))
+    border-radius: $border-card-s
+    padding: 10px 12px
+    display: grid
+    gap: 8px
+
+  .summary
+    border-radius: 10px
+    padding: 10px 12px
+    background: linear-gradient(120deg, var(--bg-a100), var(--bg-a20))
+
+  .summary-label
+    color: var(--text-p2)
+    font-size: $fs-12
+
+  .summary-value
+    margin-top: 3px
+    color: var(--text-p1)
+    font-weight: 700
+    font-size: $fs-20
+
+  .stat-item
+    display: flex
+    align-items: center
+    justify-content: space-between
+    line-height: 1.2
+    background: var(--bg-a20)
+    border-radius: 8px
+    padding: 10px
+    text-decoration: none
+    trans1 background
+
+    &:hover
+      background: var(--bg-a50)
+
+  .left
+    display: inline-flex
+    align-items: center
+    gap: 8px
+
+  .right
+    display: inline-flex
+    align-items: center
+    gap: 7px
+
+  .dot
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 1.5rem
+    height: 1.5rem
+    border-radius: 999px
+    background: var(--block)
+    color: var(--accent)
+
+    svg
+      width: 1rem
+      height: 1rem
+      fill: currentColor
+
+  .label
+    color: var(--text-p2)
+
+  .value
+    color: var(--text-p1)
+    font-weight: 700
+    font-size: $fs-16
+
+  .arrow
+    color: var(--text-p3)
+    font-size: $fs-13

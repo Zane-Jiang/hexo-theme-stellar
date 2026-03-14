@@ -21,6 +21,15 @@ recent:
   rss: # /atom.xml # npm i hexo-generator-feed
   limit: 10 # Count of posts
 
+content_stats:
+  layout: content_stats
+  title: 内容统计
+  total_label: 合计字数
+  labels:
+    post: 博客
+    note: 笔记
+    project: 项目
+
 # 页面树（与当前页面强关联的上下篇文章列表）
 tree:
   layout: tree
