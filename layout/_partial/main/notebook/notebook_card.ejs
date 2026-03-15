@@ -7,4 +7,8 @@
       <p><%= notebook.description %></p>
     <% } %>
   </div>
+  <div class="notebook-note-count">
+    <span><%= notebook.noteMap ? notebook.noteMap.size : 0 %></span>
+    <small>篇笔记</small>
+  </div>
 </article>
